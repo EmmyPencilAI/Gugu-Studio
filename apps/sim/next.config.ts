@@ -39,7 +39,12 @@ const LANDING_ROUTES = [
   'workflows',
 ] as const
 
+const PORT = Number(process.env.PORT || '3000')
+
 const nextConfig: NextConfig = {
+  serverRuntimeConfig: {
+    port: PORT,
+  },
   devIndicators: false,
   poweredByHeader: false,
   // Safe here since this repo's source is already fully public on GitHub -

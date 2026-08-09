@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: simstudio
+    runtime: node
+    repo: https://github.com/EmmyPencilAI/Gugu-Studio
+    branch: main
+    buildCommand: bun install && bun run render-build
+    startCommand: bun run render-start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.0
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=2048"
+      - key: DATABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+    healthCheckPath: /
+    autoDeploy: true
+    plan: free

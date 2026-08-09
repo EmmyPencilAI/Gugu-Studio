@@ -33,7 +33,7 @@ async function createRoomManager(io: SocketIOServer): Promise<IRoomManager> {
 
 async function main() {
   const httpServer = createServer()
-  const PORT = env.PORT
+  const PORT = Number(process.env.PORT ?? env.PORT ?? '3002')
 
   logger.info('Starting Socket.IO server...', {
     port: PORT,
