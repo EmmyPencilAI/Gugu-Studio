@@ -13,9 +13,9 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "build:render": "NODE_OPTIONS='--max-old-space-size=4096' turbo run build --filter=!@sim/desktop --concurrency=2",
-    "render-build": "bun run build:render",
-    "render-start": "cd apps/sim && bun start"
+    "build:render": "node render-build.js",
+    "render-build": "node render-build.js",
+    "render-start": "cd apps/sim && bun start",
     "dev": "turbo run dev",
     "dev:sockets": "cd apps/realtime && bun run dev",
     "dev:full": "bunx concurrently -n \"App,Realtime\" -c \"cyan,magenta\" \"cd apps/sim && bun run dev\" \"cd apps/realtime && bun run dev\"",
