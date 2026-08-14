@@ -10,7 +10,7 @@ services:
       - key: NODE_VERSION
         value: 20.11.0
       - key: NODE_OPTIONS
-        value: "--max-old-space-size=2048"
+        value: "--max-old-space-size=4096"
       - key: DATABASE_URL
         sync: false
       - key: NEXT_PUBLIC_SUPABASE_URL
