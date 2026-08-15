@@ -4,7 +4,7 @@ services:
     runtime: node
     repo: https://github.com/EmmyPencilAI/Gugu-Studio
     branch: main
-    buildCommand: bun install && bun run render-build
+    buildCommand: bun run build:render
     startCommand: bun run render-start
     envVars:
       - key: NODE_VERSION
