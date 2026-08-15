@@ -1,18 +1,22 @@
-import { execSync } from 'child_process'
+// render-build.js
+const { execSync } = require('child_process');
 
-console.log('🚀 Starting Render build with memory optimization...')
-
-const buildCmd =
-  'turbo run build --filter=!@sim/desktop --filter=!@sim/desktop-bridge --concurrency=2'
+console.log('🔨 Running Render-specific build...');
 
 try {
-  execSync(buildCmd, {
-    stdio: 'inherit',
-    env: { ...process.env, NODE_OPTIONS: '--max-old-space-size=2048' },
-  })
-} catch (error) {
-  console.error('❌ Build failed:', error instanceof Error ? error.message : String(error))
-  process.exit(1)
-}
+  // Install dependencies
+  console.log('📦 Installing dependencies...');
+  execSync('bun install', { stdio: 'inherit' });
 
-console.log('✅ Build complete!')
+  // Build only necessary packages (exclude desktop)
+  console.log('🏗️ Building packages (excluding @sim/desktop)...');
+  execSync('bun run build --filter=!@sim/desktop --concurrency=2', { 
+    stdio: 'inherit',
+    env: { ...process.env, NODE_OPTIONS: '--max-old-space-size=4096' }
+  });
+
+  console.log('✅ Build completed successfully!');
+} catch (error) {
+  console.error('❌ Build failed:', error.message);
+  process.exit(1);
+}
