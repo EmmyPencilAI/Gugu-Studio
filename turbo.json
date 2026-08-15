@@ -2,7 +2,7 @@
   "$schema": "https://v2-9-12.turborepo.dev/schema.json",
   "envMode": "loose",
   "ui": "tui",
-  "globalDependencies": ["$NODE_OPTIONS", "$TURBO_CONCURRENCY"],
+  "globalDependencies": [],
   "tasks": {
     "transit": {
       "dependsOn": ["^transit"],
